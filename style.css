@@ -1,0 +1,193 @@
+:root {
+  color-scheme: light;
+  --ink: #202a24;
+  --muted: #65736a;
+  --line: #d9dfd8;
+  --paper: #f5f7f2;
+  --surface: #ffffff;
+  --accent: #b84c31;
+  --accent-soft: #f5e8e2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  background-image: linear-gradient(90deg, rgba(32, 42, 36, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.55;
+}
+
+.page {
+  width: min(100% - 40px, 820px);
+  margin: 0 auto;
+  padding: 72px 0 88px;
+}
+
+.page-header {
+  padding-bottom: 34px;
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.intro {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.repository-section {
+  margin-top: 32px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.repository-count,
+.repository-meta {
+  color: var(--muted);
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 0.8rem;
+}
+
+.repository-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.repository-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  animation: appear 360ms ease both;
+}
+
+.repository-link {
+  width: fit-content;
+  color: var(--ink);
+  font-size: 1.35rem;
+  font-weight: 600;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+
+.repository-link:hover,
+.repository-link:focus-visible {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+.repository-description {
+  grid-column: 1;
+  margin: 0;
+  color: var(--muted);
+}
+
+.repository-meta {
+  grid-column: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+}
+
+.language {
+  color: var(--accent);
+}
+
+.star-mark {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: start;
+  padding: 4px 9px;
+  border-radius: 2px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 0.75rem;
+}
+
+.status-message {
+  padding: 22px 0;
+  color: var(--muted);
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 520px) {
+  .page {
+    width: min(100% - 32px, 820px);
+    padding-top: 48px;
+  }
+
+  .repository-item {
+    gap: 8px 12px;
+  }
+
+  .repository-link {
+    font-size: 1.15rem;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
